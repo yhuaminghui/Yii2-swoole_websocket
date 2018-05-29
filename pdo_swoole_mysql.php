@@ -3,7 +3,7 @@ class pdo_swoole_mysql
 {
     private $dbms = 'mysql';
     private $host = '';
-    private $port = ;
+    private $port = 3306;
     private $database = '';
     private $username = '';
     private $password = '';
