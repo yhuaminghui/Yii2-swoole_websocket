@@ -2,11 +2,11 @@
 
 class self_swoole_mysql
 {
-    private $host = '127.0.0.1';
-    private $port = 3306;
-    private $user = 'root';
-    private $pass = 'Wo1tian3chi';
-    private $database = 'yii2basic';
+    private $host = '';
+    private $port = ;
+    private $user = '';
+    private $pass = '';
+    private $database = '';
     private $charset = 'utf8';
     private $timeout = 2;
     public $config;
