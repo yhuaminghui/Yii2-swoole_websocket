@@ -3,7 +3,7 @@
 class self_swoole_mysql
 {
     private $host = '';
-    private $port = ;
+    private $port = 3306;
     private $user = '';
     private $pass = '';
     private $database = '';
