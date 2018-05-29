@@ -1,0 +1,93 @@
+.im-box{
+    border:1px solid #000000;
+    height:500px;
+    width: 753px;
+}
+.left-user{
+    border:1px solid red;
+    width: 150px;
+    height:100%;
+    float: left;
+}
+.left-user div{
+    margin: 8px;
+    cursor: pointer;
+}
+.left-user img{
+    width: 45px;
+    border-radius: 25px;
+}
+.right-content{
+    border:1px solid blue;
+    width:600px;
+    height:100%;
+    float: right;
+    position: relative;
+}
+.send-content{
+    border:1px solid #b0b7ae;
+    position: absolute;
+    width: 600px;
+    height:100px;
+    bottom: 0px;
+}
+.send-content textarea{
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+.send-content #send{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 80px;
+}
+.send-content #close{
+    position: absolute;
+    right: 80px;
+    bottom: 0px;
+    width: 80px;
+}
+
+.receive-im-head{
+    width:60px;
+    border-radius:30px;
+    float: left;
+}
+.receive-im-name{
+    color: #737373;
+}
+
+.select{
+    background-color: #ccc;
+    border-radius: 30px;
+}
+.self-im-head{
+    width:60px;
+    border-radius:30px;
+    float: right;
+}
+.self-im-name{
+    color: #737373;
+}
+.self-box{
+    text-align: right;
+}
+.self-content-box{
+    float: right;
+}
+.self-box{
+    clear: both;
+}
+.receive-box{
+    clear: both;
+}
+p{
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+.show-content{
+    overflow: scroll;
+    height: 410px;
+}
