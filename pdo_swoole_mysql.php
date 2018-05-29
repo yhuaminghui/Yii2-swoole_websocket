@@ -2,11 +2,11 @@
 class pdo_swoole_mysql
 {
     private $dbms = 'mysql';
-    private $host = '127.0.0.1';
-    private $port = 3306;
-    private $database = 'yii2basic';
-    private $username = 'root';
-    private $password = 'Wo1tian3chi';
+    private $host = '';
+    private $port = ;
+    private $database = '';
+    private $username = '';
+    private $password = '';
     private $charset = 'utf8';
     private $con;
     public function __construct()
