@@ -9,7 +9,7 @@ PS：需要配置些东西：
       配置聊天记录储存根目录地址，在index.php下方
       外需要建立一张 im 标识记录表，表结构在index.php最下面，可以直接使用
       basic/web/js/im_index.js 中 var wsServer = 'xxx.xxx.xxx:8008'需要配置对应服务器
-      Nginx配置路径/Apache配置路径到/xxx/xxx/basic/web/下，以保证可以访问到yii框架
+      Nginx配置路径或Apache配置路径到/xxx/xxx/basic/web/下，以保证可以访问到yii框架
       
 跑一下试试吧，Go
 
