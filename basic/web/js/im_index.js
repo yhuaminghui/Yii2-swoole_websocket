@@ -1,4 +1,4 @@
-var wsServer = 'ws://39.105.132.97:8008';
+var wsServer = 'ws://xxx.xxx.xxx:8008';
 var websocket = new WebSocket(wsServer);
 
 // 此链接主要功能
