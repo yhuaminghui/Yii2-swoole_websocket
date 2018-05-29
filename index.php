@@ -3,12 +3,14 @@
 require_once __DIR__ . '/pdo_swoole_mysql.php';
 class swoole_websocket{
 
-    private $host = '0.0.0.0';
-    private $port = 8008;
-    private static $ws;
-
-    public function __construct()
+    private $host = '0.0.0.0'; // 监听地址 默认任意地址
+    private $port = 8008;  // 监听端口 默认8008
+    private static $ws; // 储存连接标识
+    private $chatDir; // 聊天记录储存根目录
+    
+    public function __construct($chatDir)
     {
+        $this->chatDir = $chatDir;
         // 初始化连接
         $this->init();
         // 监听链接
@@ -35,8 +37,6 @@ class swoole_websocket{
     public function open()
     {
         self::$ws->on('open', function ($ws, $request) {
-//            var_dump($request->fd, $request->get, $request->server);
-//            print_r($request->fd);
             $ws->push($request->fd, $this->returnJson(['error'=>20000,'msg'=>'hello, welcome','data'=>[]]));
         });
     }
@@ -108,7 +108,7 @@ class swoole_websocket{
                 // 2，根据 to 用户id 获取对应的文件名
                 // 3，获取文件内容，格式请看 case 为 single_im中记录聊天记录中的数据格式
                     $chat = $requestData['self']['id'] . '/' . date('Y-m-d') . '/' . $requestData['to']['id'] . '.log' ;
-                    $chatDir = '/www/wwwroot/swoole.com/chat/' . $chat;
+                    $chatDir = $this->chatDir . $chat;
 
                     if(file_exists($chatDir))
                     {
@@ -116,9 +116,7 @@ class swoole_websocket{
                     }else{
                         $chatContent = '{}';
                     }
-//                    var_dump(json_decode($chatContent,true));
-//                    var_dump($chatContent);
-//                    var_dump($chatDir);
+                    
                     // 4，获取当前用户的fd，返回数据
                     $ws->push($frame->fd,$this->returnJson(['error'=>20000,'msg'=>'success','data'=>json_decode($chatContent,true)]));
                     break;
@@ -200,8 +198,8 @@ class swoole_websocket{
                              * }
                              */
                             // 获取原有的文件内容
-                            $selfChatDir = '/www/wwwroot/swoole.com/chat/' . $selfFlag . '/' . date('Y-m-d') . '/' . $toFlag . '.log';
-                            $toChatDir = '/www/wwwroot/swoole.com/chat/' . $toFlag . '/' . date('Y-m-d') . '/' . $selfFlag . '.log';
+                            $selfChatDir = $this->chatDir . $selfFlag . '/' . date('Y-m-d') . '/' . $toFlag . '.log';
+                            $toChatDir = $this->chatDir . $toFlag . '/' . date('Y-m-d') . '/' . $selfFlag . '.log';
 
                             $chatRecode = [
                                 'id'        =>  $selfFlag,
@@ -332,9 +330,9 @@ class swoole_websocket{
 }
 
 
-
-$ws = new swoole_websocket();
-$ws->begin();
+$chatDir = ''; // 聊天记录储存根目录
+$ws = new swoole_websocket($chatDir);
+$ws->begin(); // 运行
 
 // 链接 标识 表
 //drop table if exists fd;
